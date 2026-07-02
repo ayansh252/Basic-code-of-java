@@ -4,10 +4,10 @@ public class CustomLock {
     public static void main(String[] args) {
         Bank bank=new Bank();
         Thread t1=new Thread(bank::deposit);
+        Thread t5=new Thread(bank::deposit);
         Thread t2=new Thread(bank::withDraw);
         Thread t3=new Thread(bank::m1);
         Thread t4=new Thread(bank::m1);
-        Thread t5=new Thread(bank::deposit);
         t1.start();
         t2.start();
         t3.start();
