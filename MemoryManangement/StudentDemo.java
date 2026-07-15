@@ -2,10 +2,19 @@ package MemoryManangement;
 
 public class StudentDemo {
     public static void main(String[] args) {
-        Student s1=new Student("Ayansh",22);
-        s1.markAttendance();
-        Student.setCollegeName("KIT");
+        try{
+            Student s1=new Student("Ayansh",22);
+            Student.setCollegeName("");
         System.out.println(Student.collegeName);
+        s1.markAttendance();
+        }catch (IllegalStudent e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+class IllegalStudent extends RuntimeException{
+    public IllegalStudent(String message){
+        super(message);
     }
 }
 class Student {
@@ -16,7 +25,11 @@ class Student {
         this.name=name;
         this.age=age;
     }
+
     public static void setCollegeName(String collegeName){
+        if(collegeName==null||collegeName.equals("")){
+            throw new IllegalStudent("no leave any field empty");
+        }
         collegeName=collegeName;
     }
     public void markAttendance(){
