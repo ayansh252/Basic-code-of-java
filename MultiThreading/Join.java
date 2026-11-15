@@ -12,7 +12,8 @@ public class Join {
             System.out.println("Thread name : " +Thread.currentThread().getName());
         });
         t1.start();
-        t1.join(100);
+        t1.join();
         System.out.println("main thread ends");
     }
 }
+
